@@ -1,18 +1,19 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:n_gold/app/routes/app_routes.dart';
+import 'package:n_gold/app/views/main_screen.dart';
 import 'package:n_gold/app/views/splash_screen.dart';
 
 
 class RouteManager {
   static Route<dynamic>? generateRoute(RouteSettings settings) {
     switch (settings.name) {
-      case AppRoutes.splash:
+      case AppRoutes.main:
         return CupertinoPageRoute(
-          builder: (_) => const SplashScreen(),
+          builder: (_) => const MainScreen(),
         );
-      // case AppRoutes.signIn:
-      //   return CupertinoPageRoute(builder: (_) => const SignIn());
+      case AppRoutes.splashScreen:
+        return CupertinoPageRoute(builder: (_) => const SplashScreen());
 
 
       default:
