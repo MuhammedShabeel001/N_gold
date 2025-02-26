@@ -1,0 +1,1 @@
+String kappName = 'N Gold';
