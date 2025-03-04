@@ -21,41 +21,62 @@ class HomeScreen extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               const GoldTitleWidget(),
-              const BidAskPriceWidget(),
-              const HighLowPriceWidget(),
-              const DiscountWidget(),
+              Container(
+                  decoration: BoxDecoration(
+                      color: const Color.fromARGB(12, 0, 0, 0),
+                      borderRadius: BorderRadius.circular(12)),
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 20, horizontal: 12),
+                    child: Column(
+                      spacing: 16,
+                      children: [
+                        const BidAskPriceWidget(),
+                        const HighLowPriceWidget(),
+                        const DiscountWidget(),
+                      ],
+                    ),
+                  )),
               const ProductsTitleWidget(),
               Expanded(
-                child: ListView(
-                  children: const [
-                    ProductCard(
-                      title: 'TEN TOLA BAR',
-                      unit: '1TTB',
-                      bidPrice: '40137',
-                      askPrice: '40137',
+                child: Container(
+decoration: BoxDecoration(
+                      color: const Color.fromARGB(12, 0, 0, 0),
+                      borderRadius: BorderRadius.circular(12)),
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 12,right: 12,top: 20),
+                    child: ListView(
+                      children: const [
+                        ProductCard(
+                          title: 'TEN TOLA BAR',
+                          unit: '1TTB',
+                          bidPrice: '40137',
+                          askPrice: '40137',
+                        ),
+                        SizedBox(height: 8),
+                        ProductCard(
+                          title: 'GOLD 22 KT',
+                          unit: '1GM',
+                          bidPrice: '316.98',
+                          askPrice: '317.09',
+                        ),
+                        SizedBox(height: 8),
+                        ProductCard(
+                          title: 'GOLD 9999',
+                          unit: '1GM',
+                          bidPrice: '344.45',
+                          askPrice: '344.56',
+                        ),
+                        SizedBox(height: 8),
+                        ProductCard(
+                          title: 'KILOBAR 995',
+                          unit: '1KG',
+                          bidPrice: '342790',
+                          askPrice: '342889',
+                        ),
+                      ],
                     ),
-                    SizedBox(height: 8),
-                    ProductCard(
-                      title: 'GOLD 22 KT',
-                      unit: '1GM',
-                      bidPrice: '316.98',
-                      askPrice: '317.09',
-                    ),
-                    SizedBox(height: 8),
-                    ProductCard(
-                      title: 'GOLD 9999',
-                      unit: '1GM',
-                      bidPrice: '344.45',
-                      askPrice: '344.56',
-                    ),
-                    SizedBox(height: 8),
-                    ProductCard(
-                      title: 'KILOBAR 995',
-                      unit: '1KG',
-                      bidPrice: '342790',
-                      askPrice: '342889',
-                    ),
-                  ],
+                  ),
                 ),
               ),
             ],
