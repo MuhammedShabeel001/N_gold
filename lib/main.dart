@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:n_gold/app/bindings/auth_binding.dart';
 import 'package:n_gold/app/routes/app_routes.dart';
 import 'package:n_gold/app/routes/route_manager.dart';
 import 'package:n_gold/app/utils/app_texts.dart';
@@ -18,7 +19,8 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(fontFamily: 'Poppins', useMaterial3: true),
         themeMode: ThemeMode.system,
         debugShowCheckedModeBanner: false,
-        initialRoute: AppRoutes.main,
+        initialRoute: AppRoutes.logIn,
+        initialBinding: AuthBinding(),
         onGenerateRoute: RouteManager.generateRoute,
       );
   }

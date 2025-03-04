@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:n_gold/app/routes/app_routes.dart';
+import 'package:n_gold/app/views/login_screen.dart';
 import 'package:n_gold/app/views/main_screen.dart';
 import 'package:n_gold/app/views/splash_screen.dart';
 
@@ -14,6 +15,8 @@ class RouteManager {
         );
       case AppRoutes.splashScreen:
         return CupertinoPageRoute(builder: (_) => const SplashScreen());
+      case AppRoutes.logIn:
+        return CupertinoPageRoute(builder: (_) => LoginScreen());
 
 
       default:
