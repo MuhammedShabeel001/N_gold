@@ -9,9 +9,9 @@ import '../widgets/custom_appbar.dart';
 import '../widgets/custom_navbar.dart';
 
 class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
+   MainScreen({super.key});
 
-  final List<Widget> pages = const [
+  final List<Widget> pages =  [
     HomeScreen(),
     NewsScreen(),
     ProfileScreen(),
