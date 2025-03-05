@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:n_gold/app/bindings/auth_binding.dart';
-import 'package:n_gold/app/routes/app_routes.dart';
+import 'package:n_gold/app/bindings/initial_binding.dart';
+// import 'package:n_gold/app/routes/app_routes.dart';
 import 'package:n_gold/app/routes/route_manager.dart';
+import 'package:n_gold/app/test.dart';
 import 'package:n_gold/app/utils/app_texts.dart';
 
 void main() {
@@ -20,8 +22,10 @@ class MyApp extends StatelessWidget {
         themeMode: ThemeMode.system,
         debugShowCheckedModeBanner: false,
         initialRoute: AppRoutes.splashScreen,
-        initialBinding: AuthBinding(),
-        onGenerateRoute: RouteManager.generateRoute,
+        initialBinding: InitialBinding(),
+        getPages: AppRoutes.pages,
+        // onGenerateRoute: RouteManager.generateRoute,
+        // home: SpotRatesScreen(),
       );
   }
 }

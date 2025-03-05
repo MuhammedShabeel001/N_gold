@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
 class HighLowPriceWidget extends StatelessWidget {
-  const HighLowPriceWidget({super.key});
+  final String highPrice;
+  final String lowPrice;
+
+  const HighLowPriceWidget({
+    super.key,
+    required this.highPrice,
+    required this.lowPrice,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +31,9 @@ class HighLowPriceWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                const Text(
-                  '\$ 2919.49',
-                  style: TextStyle(
+                Text(
+                  '\$ $highPrice',
+                  style: const TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
@@ -53,9 +60,9 @@ class HighLowPriceWidget extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                const Text(
-                  '\$ 2919.49',
-                  style: TextStyle(
+                Text(
+                  '\$ $lowPrice',
+                  style: const TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),

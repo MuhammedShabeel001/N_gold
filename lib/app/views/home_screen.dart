@@ -1,5 +1,114 @@
-import 'package:flutter/material.dart';
+// import 'package:flutter/material.dart';
+// import 'package:get/get.dart';
+// import '../controllers/spot_rate_controller.dart';
+// import '../models/spot_rate_model.dart';
+// import '../widgets/home/product_card.dart';
+// import '../widgets/home/bid_ask_widget.dart';
+// import '../widgets/home/discount.dart';
+// import '../widgets/home/gold_title.dart';
+// import '../widgets/home/high_low_price.dart';
+// import '../widgets/home/product_title.dart';
 
+// class HomeScreen extends StatelessWidget {
+//   const HomeScreen({super.key});
+
+//   @override
+//   Widget build(BuildContext context) {
+//     final SpotRateController spotRateController = Get.find();
+
+//     return Scaffold(
+//       body: SafeArea(
+//         child: Obx(() {
+//           if (spotRateController.isLoading) {
+//             return const Center(child: CircularProgressIndicator());
+//           }
+
+//           if (spotRateController.errorMessage.isNotEmpty) {
+//             return Center(
+//               child: Text(
+//                 'Error: ${spotRateController.errorMessage}',
+//                 style: const TextStyle(color: Colors.red),
+//               ),
+//             );
+//           }
+
+//           final spotRates = spotRateController.spotRates;
+          
+//           // Find specific spot rates
+//           final goldSpotRate = spotRates.firstWhere(
+//             (rate) => rate.symbol == 'GOLD',
+//             orElse: () => SpotRate(symbol: 'GOLD', currentPrice: 0.0, changePercentage: 0.0),
+//           );
+
+//           return Padding(
+//             padding: const EdgeInsets.all(16.0),
+//             child: Column(
+//               crossAxisAlignment: CrossAxisAlignment.start,
+//               children: [
+//                 const GoldTitleWidget(),
+//                 Container(
+//                   decoration: BoxDecoration(
+//                     color: const Color.fromARGB(12, 0, 0, 0),
+//                     borderRadius: BorderRadius.circular(12),
+//                   ),
+//                   child: Padding(
+//                     padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
+//                     child: Column(
+//                       children: [
+//                         BidAskPriceWidget(
+//                           bidPrice: goldSpotRate.currentPrice.toStringAsFixed(2),
+//                           askPrice: (goldSpotRate.currentPrice + 0.10).toStringAsFixed(2),
+//                         ),
+//                         HighLowPriceWidget(
+//                           highPrice: goldSpotRate.currentPrice.toStringAsFixed(2),
+//                           lowPrice: (goldSpotRate.currentPrice - 0.10).toStringAsFixed(2),
+//                         ),
+//                         DiscountWidget(
+//                           discountAmount: goldSpotRate.changePercentage.toStringAsFixed(2),
+//                         ),
+//                       ],
+//                     ),
+//                   ),
+//                 ),
+//                 const ProductsTitleWidget(),
+//                 Expanded(
+//                   child: Container(
+//                     decoration: BoxDecoration(
+//                       color: const Color.fromARGB(12, 0, 0, 0),
+//                       borderRadius: BorderRadius.circular(12),
+//                     ),
+//                     child: Padding(
+//                       padding: const EdgeInsets.only(left: 12, right: 12, top: 20),
+//                       child: ListView(
+//                         children: spotRates.map((rate) => 
+//                           Padding(
+//                             padding: const EdgeInsets.only(bottom: 8.0),
+//                             child: ProductCard(
+//                               title: rate.symbol,
+//                               unit: '1GM',
+//                               bidPrice: rate.currentPrice.toStringAsFixed(2),
+//                               askPrice: (rate.currentPrice + 0.10).toStringAsFixed(2),
+//                             ),
+//                           )
+//                         ).toList(),
+//                       ),
+//                     ),
+//                   ),
+//                 ),
+//               ],
+//             ),
+//           );
+//         }),
+//       ),
+//     );
+//   }
+// }
+
+
+
+import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import '../controllers/spot_rate_controller.dart';
 import '../widgets/home/product_card.dart';
 import '../widgets/home/bid_ask_widget.dart';
 import '../widgets/home/discount.dart';
@@ -12,77 +121,110 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final SpotRateController spotRateController = Get.find();
+
     return Scaffold(
       body: SafeArea(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            spacing: 16,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const GoldTitleWidget(),
-              Container(
-                  decoration: BoxDecoration(
-                      color: const Color.fromARGB(12, 0, 0, 0),
-                      borderRadius: BorderRadius.circular(12)),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 20, horizontal: 12),
-                    child: Column(
-                      spacing: 16,
-                      children: [
-                        const BidAskPriceWidget(),
-                        const HighLowPriceWidget(),
-                        const DiscountWidget(),
-                      ],
-                    ),
-                  )),
-              const ProductsTitleWidget(),
-              Expanded(
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: const Color.fromARGB(12, 0, 0, 0),
-                      borderRadius: BorderRadius.circular(12)),
-                  child: Padding(
-                    padding:
-                        const EdgeInsets.only(left: 12, right: 12, top: 20),
-                    child: ListView(
-                      children: const [
-                        ProductCard(
-                          title: 'TEN TOLA BAR',
-                          unit: '1TTB',
-                          bidPrice: '40137',
-                          askPrice: '40137',
+        child: Obx(() {
+          if (spotRateController.isLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          if (spotRateController.errorMessage.isNotEmpty) {
+            return Center(
+              child: Text(
+                'Error: ${spotRateController.errorMessage}',
+                style: const TextStyle(color: Colors.red),
+              ),
+            );
+          }
+
+          final spotRates = spotRateController.spotRates;
+          
+          // Find the primary gold spot rate (assuming the highest purity)
+          final primaryGoldRate = spotRates.isNotEmpty 
+            ? spotRates.reduce((a, b) => 
+                double.parse(a.symbol.split(' ').last) > 
+                double.parse(b.symbol.split(' ').last) 
+                  ? a 
+                  : b)
+            : null;
+
+          return RefreshIndicator(
+            onRefresh: () => spotRateController.fetchSpotRates(),
+            child: ListView(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const GoldTitleWidget(),
+                      
+                      // Main Price and Metrics Container
+                      Container(
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(12, 0, 0, 0),
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                        SizedBox(height: 8),
-                        ProductCard(
-                          title: 'GOLD 22 KT',
-                          unit: '1GM',
-                          bidPrice: '316.98',
-                          askPrice: '317.09',
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 12),
+                          child: primaryGoldRate != null 
+                            ? Column(
+                                children: [
+                                  BidAskPriceWidget(
+                                    bidPrice: (primaryGoldRate.currentPrice - 10).toStringAsFixed(2),
+                                    askPrice: primaryGoldRate.currentPrice.toStringAsFixed(2),
+                                  ),
+                                  HighLowPriceWidget(
+                                    highPrice: (primaryGoldRate.currentPrice + 50).toStringAsFixed(2),
+                                    lowPrice: (primaryGoldRate.currentPrice - 50).toStringAsFixed(2),
+                                  ),
+                                  const DiscountWidget(
+                                    discountAmount: '3.0',
+                                  ),
+                                ],
+                              )
+                            : const Center(child: Text('No Gold Rates Available')),
                         ),
-                        SizedBox(height: 8),
-                        ProductCard(
-                          title: 'GOLD 9999',
-                          unit: '1GM',
-                          bidPrice: '344.45',
-                          askPrice: '344.56',
+                      ),
+
+                      const ProductsTitleWidget(),
+                      
+                      // Products List
+                      Container(
+                        decoration: BoxDecoration(
+                          color: const Color.fromARGB(12, 0, 0, 0),
+                          borderRadius: BorderRadius.circular(12),
                         ),
-                        SizedBox(height: 8),
-                        ProductCard(
-                          title: 'KILOBAR 995',
-                          unit: '1KG',
-                          bidPrice: '342790',
-                          askPrice: '342889',
+                        child: Padding(
+                          padding: const EdgeInsets.only(left: 12, right: 12, top: 20),
+                          child: ListView.builder(
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: spotRates.length,
+                            itemBuilder: (context, index) {
+                              final rate = spotRates[index];
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: 8.0),
+                                child: ProductCard(
+                                  title: rate.symbol,
+                                  unit: '1GM',
+                                  bidPrice: (rate.currentPrice - 10).toStringAsFixed(2),
+                                  askPrice: rate.currentPrice.toStringAsFixed(2),
+                                ),
+                              );
+                            },
+                          ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
-              ),
-            ],
-          ),
-        ),
+              ],
+            ),
+          );
+        }),
       ),
     );
   }

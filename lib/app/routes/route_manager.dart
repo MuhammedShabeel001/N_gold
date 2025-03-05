@@ -1,35 +1,36 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/material.dart';
-import 'package:n_gold/app/routes/app_routes.dart';
+import 'package:get/get.dart';
+import 'package:n_gold/app/bindings/auth_binding.dart';
+import 'package:n_gold/app/bindings/spot_rate_binding.dart';
 import 'package:n_gold/app/views/login_screen.dart';
 import 'package:n_gold/app/views/main_screen.dart';
 import 'package:n_gold/app/views/splash_screen.dart';
 
+class AppRoutes {
+  // Define route names as static constants
+  static const String splashScreen = '/splash';
+  static const String logIn = '/login';
+  static const String main = '/';
 
-class RouteManager {
-  static Route<dynamic>? generateRoute(RouteSettings settings) {
-    switch (settings.name) {
-      case AppRoutes.main:
-        return CupertinoPageRoute(
-          builder: (_) => const MainScreen(),
-        );
-      case AppRoutes.splashScreen:
-        return CupertinoPageRoute(builder: (_) =>  SplashScreen());
-      case AppRoutes.logIn:
-        return CupertinoPageRoute(builder: (_) => LoginScreen());
-
-
-      default:
-        return _errorRoute();
-    }
-  }
-
-  static Route<dynamic> _errorRoute() {
-    return CupertinoPageRoute(
-      builder: (_) => Scaffold(
-        appBar: AppBar(title: const Text('Error')),
-        body: const Center(child: Text('Page not found')),
-      ),
-    );
-  }
+  // GetX pages with associated bindings
+  static final pages = [
+    GetPage(
+      name: splashScreen,
+      page: () => SplashScreen(),
+      binding: AuthBinding()
+      // You can add specific bindings if needed
+    ),
+    GetPage(
+      name: logIn,
+      page: () => LoginScreen(),
+      binding: AuthBinding(),
+    ),
+    GetPage(
+      name: main,
+      page: () => const MainScreen(),
+      bindings: [
+        AuthBinding(),
+        SpotRateBinding(), // Add your spot rate binding here
+      ],
+    ),
+  ];
 }

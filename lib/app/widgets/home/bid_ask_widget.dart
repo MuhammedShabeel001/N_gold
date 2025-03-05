@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 
 class BidAskPriceWidget extends StatelessWidget {
-  const BidAskPriceWidget({super.key});
+  final String bidPrice;
+  final String askPrice;
+
+  const BidAskPriceWidget({
+    super.key,
+    required this.bidPrice,
+    required this.askPrice,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +35,9 @@ class BidAskPriceWidget extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      '2919.49',
-                      style: TextStyle(
+                    Text(
+                      bidPrice,
+                      style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
@@ -73,9 +80,9 @@ class BidAskPriceWidget extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    const Text(
-                      '2919.39',
-                      style: TextStyle(
+                    Text(
+                      askPrice,
+                      style: const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
