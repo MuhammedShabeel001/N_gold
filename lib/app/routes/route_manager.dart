@@ -14,7 +14,7 @@ class RouteManager {
           builder: (_) => const MainScreen(),
         );
       case AppRoutes.splashScreen:
-        return CupertinoPageRoute(builder: (_) => const SplashScreen());
+        return CupertinoPageRoute(builder: (_) =>  SplashScreen());
       case AppRoutes.logIn:
         return CupertinoPageRoute(builder: (_) => LoginScreen());
 

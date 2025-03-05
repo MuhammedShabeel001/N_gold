@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(fontFamily: 'Poppins', useMaterial3: true),
         themeMode: ThemeMode.system,
         debugShowCheckedModeBanner: false,
-        initialRoute: AppRoutes.logIn,
+        initialRoute: AppRoutes.splashScreen,
         initialBinding: AuthBinding(),
         onGenerateRoute: RouteManager.generateRoute,
       );

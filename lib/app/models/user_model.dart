@@ -31,4 +31,17 @@ class UserModel {
       goldBalance: json['goldBalance'].toDouble(),
     );
   }
+
+  Map<String, dynamic> toJson() {
+    return {
+      '_id': id,
+      'name': name,
+      'email': email,
+      'contact': contact,
+      'location': location,
+      'categoryId': categoryId,
+      'cashBalance': cashBalance,
+      'goldBalance': goldBalance,
+    };
+  }
 }

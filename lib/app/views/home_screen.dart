@@ -40,11 +40,12 @@ class HomeScreen extends StatelessWidget {
               const ProductsTitleWidget(),
               Expanded(
                 child: Container(
-decoration: BoxDecoration(
+                  decoration: BoxDecoration(
                       color: const Color.fromARGB(12, 0, 0, 0),
                       borderRadius: BorderRadius.circular(12)),
                   child: Padding(
-                    padding: const EdgeInsets.only(left: 12,right: 12,top: 20),
+                    padding:
+                        const EdgeInsets.only(left: 12, right: 12, top: 20),
                     child: ListView(
                       children: const [
                         ProductCard(
