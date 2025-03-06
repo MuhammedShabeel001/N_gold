@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'hourrow.dart';
 
 class HoursCardWidget extends StatelessWidget {
-  const HoursCardWidget({Key? key}) : super(key: key);
+  const HoursCardWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,14 +26,13 @@ class HoursCardWidget extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 12),
-          
-          const HourRowWidget(days: 'Monday - Thursday', hours: '10 AM - 10 PM'),
+          const HourRowWidget(
+              days: 'Monday - Thursday', hours: '10 AM - 10 PM'),
           const SizedBox(height: 8),
-          
           const HourRowWidget(days: 'Friday', hours: '04 PM - 10 PM'),
           const SizedBox(height: 8),
-          
-          const HourRowWidget(days: 'Saturday - Sunday', hours: '10 PM - 10 PM'),
+          const HourRowWidget(
+              days: 'Saturday - Sunday', hours: '10 PM - 10 PM'),
         ],
       ),
     );

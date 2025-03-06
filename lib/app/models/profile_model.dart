@@ -6,7 +6,7 @@ class UserProfile {
   final String email;
   final int contact;
   final int whatsapp;
-  
+
   UserProfile({
     required this.id,
     required this.userName,
@@ -57,11 +57,11 @@ class UserProfileResponse {
     // The API returns user info in 'info' field, not 'user'
     final userJson = json['info'];
     UserProfile? userProfile;
-    
+
     if (userJson is Map<String, dynamic>) {
       userProfile = UserProfile.fromJson(userJson);
     }
-    
+
     return UserProfileResponse(
       success: json['success'] == true,
       user: userProfile,

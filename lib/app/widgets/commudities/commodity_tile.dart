@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-// import 'package:get/get_core/src/get_main.dart';
+
 import 'package:n_gold/app/models/commudities_model.dart';
 
 class CommodityTile extends StatelessWidget {
   final Commodity commodity;
 
-  const CommodityTile({Key? key, required this.commodity}) : super(key: key);
+  const CommodityTile({super.key, required this.commodity});
 
   @override
   Widget build(BuildContext context) {
-    // Map commodity names to their corresponding icons and colors
     final IconData icon = _getCommodityIcon(commodity.name);
     final Color color = _getCommodityColor(commodity.name);
-    
+
     return Card(
       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       elevation: 2,
@@ -23,6 +22,7 @@ class CommodityTile extends StatelessWidget {
           width: 50,
           height: 50,
           decoration: BoxDecoration(
+            // ignore: deprecated_member_use
             color: color.withOpacity(0.2),
             borderRadius: BorderRadius.circular(8),
           ),
@@ -45,7 +45,6 @@ class CommodityTile extends StatelessWidget {
         ),
         trailing: const Icon(Icons.arrow_forward_ios, size: 16),
         onTap: () {
-          // In a real app, this would navigate to a detailed view
           Get.snackbar(
             'Coming Soon',
             'Detailed ${commodity.name} information will be available soon.',
@@ -55,7 +54,7 @@ class CommodityTile extends StatelessWidget {
       ),
     );
   }
-  
+
   IconData _getCommodityIcon(String name) {
     switch (name.toUpperCase()) {
       case 'GOLD':
@@ -70,7 +69,7 @@ class CommodityTile extends StatelessWidget {
         return Icons.category;
     }
   }
-  
+
   Color _getCommodityColor(String name) {
     switch (name.toUpperCase()) {
       case 'GOLD':

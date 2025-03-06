@@ -43,7 +43,8 @@ class BidAskPriceWidget extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 4),
                       child: const Text(
                         'USD',
                         style: TextStyle(
@@ -88,7 +89,8 @@ class BidAskPriceWidget extends StatelessWidget {
                       ),
                     ),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 8, vertical: 4),
                       child: const Text(
                         'USD',
                         style: TextStyle(

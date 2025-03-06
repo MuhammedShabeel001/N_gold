@@ -6,14 +6,14 @@ class ContactCardWidget extends StatelessWidget {
   final String content;
   final String icon;
   final Color iconColor;
-  
+
   const ContactCardWidget({
-    Key? key,
+    super.key,
     required this.title,
     required this.content,
     required this.icon,
     required this.iconColor,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,11 @@ class ContactCardWidget extends StatelessWidget {
             ),
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: SvgPicture.asset(icon, color: iconColor,),
+              child: SvgPicture.asset(
+                icon,
+                // ignore: deprecated_member_use
+                color: iconColor,
+              ),
             ),
           ),
         ],

@@ -33,22 +33,22 @@ class NewsController extends GetxController {
         ),
       );
 
-      developer.log('Full News Response: ${response.data}', name: 'NewsController');
+      developer.log('Full News Response: ${response.data}',
+          name: 'NewsController');
 
       if (response.statusCode == 200) {
-        // Parse the new response structure
         final Map<String, dynamic> responseData = response.data;
-        
+
         if (responseData['success'] == true && responseData['news'] != null) {
           final List<dynamic> newsData = responseData['news']['news'] ?? [];
-          
+
           developer.log('Parsed News Data: $newsData', name: 'NewsController');
 
-          newsList.value = newsData
-              .map((json) => NewsModel.fromJson(json))
-              .toList();
-          
-          developer.log('News List Length: ${newsList.length}', name: 'NewsController');
+          newsList.value =
+              newsData.map((json) => NewsModel.fromJson(json)).toList();
+
+          developer.log('News List Length: ${newsList.length}',
+              name: 'NewsController');
         } else {
           errorMessage.value = 'No news available';
         }

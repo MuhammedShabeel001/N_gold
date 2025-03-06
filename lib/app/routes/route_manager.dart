@@ -13,7 +13,6 @@ import 'package:n_gold/app/views/profile_screen.dart';
 import 'package:n_gold/app/views/splash_screen.dart';
 
 class AppRoutes {
-  // Define route names as static constants
   static const String splashScreen = '/splash';
   static const String logIn = '/login';
   static const String main = '/';
@@ -22,14 +21,9 @@ class AppRoutes {
   static const String profile = '/profile';
   static const String commodities = '/commodities';
 
-  // GetX pages with associated bindings
   static final pages = [
     GetPage(
-      name: splashScreen,
-      page: () => SplashScreen(),
-      binding: AuthBinding()
-      // You can add specific bindings if needed
-    ),
+        name: splashScreen, page: () => SplashScreen(), binding: AuthBinding()),
     GetPage(
       name: logIn,
       page: () => LoginScreen(),
@@ -38,45 +32,32 @@ class AppRoutes {
     GetPage(
       name: news,
       page: () => NewsScreen(),
-      bindings: [
-        AuthBinding(),
-        NewsBinding()
-      ],
+      bindings: [AuthBinding(), NewsBinding()],
     ),
     GetPage(
       name: home,
       page: () => HomeScreen(),
-      bindings: [
-        AuthBinding(),
-        SpotRateBinding()
-      ],
+      bindings: [AuthBinding(), SpotRateBinding()],
     ),
     GetPage(
       name: profile,
       page: () => ProfileScreen(),
-      bindings: [
-        AuthBinding(),
-        UserProfileBinding()
-      ],
+      bindings: [AuthBinding(), UserProfileBinding()],
     ),
     GetPage(
       name: commodities,
       page: () => CommoditiesPage(),
-      bindings: [
-        AuthBinding(),
-        CommoditiesBinding()
-      ],
+      bindings: [AuthBinding(), CommoditiesBinding()],
     ),
     GetPage(
       name: main,
-      page: () =>  MainScreen(),
+      page: () => MainScreen(),
       bindings: [
         AuthBinding(),
         SpotRateBinding(),
-        NewsBinding() ,
+        NewsBinding(),
         UserProfileBinding(),
         CommoditiesBinding()
-        // Add your spot rate binding here
       ],
     ),
   ];

@@ -8,7 +8,7 @@ import '../../models/news_model.dart';
 class NewsItemCard extends StatelessWidget {
   final NewsModel news;
 
-  const NewsItemCard({Key? key, required this.news}) : super(key: key);
+  const NewsItemCard({super.key, required this.news});
 
   @override
   Widget build(BuildContext context) {
@@ -28,11 +28,12 @@ class NewsItemCard extends StatelessWidget {
               height: 200,
               width: double.infinity,
               fit: BoxFit.cover,
-              placeholder: (context, url) => 
-                Image.asset(newsPlaceholder,fit:BoxFit.cover ,),
-              errorWidget: (context, url, error) => 
-                Image.asset(newsPlaceholder,fit:BoxFit.cover ),
-                
+              placeholder: (context, url) => Image.asset(
+                newsPlaceholder,
+                fit: BoxFit.cover,
+              ),
+              errorWidget: (context, url, error) =>
+                  Image.asset(newsPlaceholder, fit: BoxFit.cover),
             ),
           ),
           Padding(

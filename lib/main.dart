@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:n_gold/app/bindings/auth_binding.dart';
+
 import 'package:n_gold/app/bindings/initial_binding.dart';
-// import 'package:n_gold/app/routes/app_routes.dart';
 import 'package:n_gold/app/routes/route_manager.dart';
-import 'package:n_gold/app/test.dart';
 import 'package:n_gold/app/utils/app_texts.dart';
 
 void main() {
@@ -17,16 +15,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-        title: kappName,
-        theme: ThemeData(fontFamily: 'Poppins', useMaterial3: true),
-        themeMode: ThemeMode.system,
-        debugShowCheckedModeBanner: false,
-        initialRoute: AppRoutes.profile,
-        initialBinding: InitialBinding(),
-        getPages: AppRoutes.pages,
-        // onGenerateRoute: RouteManager.generateRoute,
-        // home: SpotRatesScreen(),
-      );
+      title: kappName,
+      theme: ThemeData(fontFamily: 'Poppins', useMaterial3: true),
+      themeMode: ThemeMode.system,
+      debugShowCheckedModeBanner: false,
+      initialRoute: AppRoutes.splashScreen,
+      initialBinding: InitialBinding(),
+      getPages: AppRoutes.pages,
+    );
   }
 }
-

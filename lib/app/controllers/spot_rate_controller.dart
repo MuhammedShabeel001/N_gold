@@ -3,10 +3,9 @@ import 'package:flutter/foundation.dart';
 import 'package:n_gold/app/models/spot_rate_model.dart';
 import 'package:n_gold/app/serrvices/spotrate_socket_service.dart';
 
-
 class SpotRateController extends GetxController {
   final SpotRateWebSocketService webSocketService;
-  
+
   SpotRateController({required this.webSocketService});
 
   final RxList<SpotRate> _spotRates = <SpotRate>[].obs;
@@ -20,8 +19,7 @@ class SpotRateController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    
-    // Listen to WebSocket stream
+
     webSocketService.spotRatesStream.listen(
       (List<SpotRate> rates) {
         _spotRates.value = rates;
@@ -35,7 +33,6 @@ class SpotRateController extends GetxController {
       },
     );
 
-    // Connect to service and fetch initial data
     fetchSpotRates();
   }
 

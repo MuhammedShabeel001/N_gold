@@ -1,17 +1,14 @@
-// lib/views/commodities_page.dart
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:n_gold/app/utils/app_assets.dart';
 import 'package:n_gold/app/widgets/custom_loading.dart';
-// import '../controllers/commodities_controller.dart';
 import '../controllers/commudities_controller.dart';
-// import '../models/commodity_model.dart';
+
 import '../models/commudities_model.dart';
 import '../widgets/commudities/commodity_tile.dart';
 
 class CommoditiesPage extends StatelessWidget {
-  const CommoditiesPage({Key? key}) : super(key: key);
+  const CommoditiesPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +26,7 @@ class CommoditiesPage extends StatelessWidget {
       ),
       body: Obx(() {
         if (controller.isLoading.value) {
-          return custom_loading(icon: kloading);
+          return CustomLoading(icon: kloading);
         }
 
         if (controller.error.isNotEmpty) {
@@ -70,4 +67,3 @@ class CommoditiesPage extends StatelessWidget {
     );
   }
 }
-

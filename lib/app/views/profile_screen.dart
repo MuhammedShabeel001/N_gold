@@ -19,7 +19,7 @@ class ProfileScreen extends StatelessWidget {
       body: SafeArea(
         child: Obx(() {
           if (controller.isLoading.value) {
-            return custom_loading(icon: kloading);
+            return CustomLoading(icon: kloading);
           }
 
           if (controller.errorMessage.isNotEmpty) {
@@ -77,7 +77,7 @@ class ProfileScreen extends StatelessWidget {
                 ),
                 InfoCardWidget(
                   title: 'Commodities',
-                  icon: kcommudities,  
+                  icon: kcommudities,
                   onTap: () {
                     Get.toNamed('/commodities');
                   },

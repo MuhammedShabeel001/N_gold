@@ -1,4 +1,3 @@
-// network_debug_tool.dart
 import 'dart:developer';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
@@ -10,8 +9,7 @@ class NetworkDebugTool {
       log('URL: ${response.request?.url}');
       log('Status Code: ${response.statusCode}');
       log('Headers: ${response.headers}');
-      
-      // Try to prettify JSON if possible
+
       try {
         final dynamic jsonData = json.decode(response.body);
         final prettyJson = const JsonEncoder.withIndent('  ').convert(jsonData);
@@ -20,7 +18,7 @@ class NetworkDebugTool {
         log('Body: ${response.body}');
         log('(Could not prettify JSON: $e)');
       }
-      
+
       log('====================');
     } catch (e) {
       log('Error logging response: $e');

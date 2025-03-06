@@ -10,13 +10,13 @@ class InfoCardWidget extends StatelessWidget {
   final VoidCallback? onTap;
 
   const InfoCardWidget({
-    Key? key,
+    super.key,
     required this.title,
     required this.icon,
     this.subtitle,
     this.iconColor,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -27,10 +27,6 @@ class InfoCardWidget extends StatelessWidget {
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(12),
       ),
-      // elevation: 2,
-      // shape: RoundedRectangleBorder(
-      //   borderRadius: BorderRadius.circular(12),
-      // ),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
@@ -38,12 +34,8 @@ class InfoCardWidget extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Row(
             children: [
+              // ignore: deprecated_member_use
               SvgPicture.asset(icon, color: iconColor ?? Colors.amber[700]),
-              // Icon(
-              //   icon,
-              //   color: iconColor ?? Colors.amber[700],
-              //   size: 24,
-              // ),
               const SizedBox(width: 16),
               Expanded(
                 child: Column(

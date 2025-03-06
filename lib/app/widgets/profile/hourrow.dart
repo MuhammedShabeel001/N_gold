@@ -3,12 +3,12 @@ import 'package:flutter/material.dart';
 class HourRowWidget extends StatelessWidget {
   final String days;
   final String hours;
-  
+
   const HourRowWidget({
-    Key? key,
+    super.key,
     required this.days,
     required this.hours,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

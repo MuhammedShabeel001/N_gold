@@ -5,17 +5,17 @@ import 'package:n_gold/app/widgets/custom_loading.dart';
 import '../controllers/news_controller.dart';
 import '../widgets/news/news_item_card.dart';
 
-
 class NewsScreen extends StatelessWidget {
   final NewsController _newsController = Get.find<NewsController>();
+
+  NewsScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-   
       body: Obx(() {
         if (_newsController.isLoading.value) {
-          return custom_loading(icon: knewsloading);
+          return CustomLoading(icon: knewsloading);
         }
 
         if (_newsController.errorMessage.isNotEmpty) {
@@ -57,4 +57,3 @@ class NewsScreen extends StatelessWidget {
     );
   }
 }
-

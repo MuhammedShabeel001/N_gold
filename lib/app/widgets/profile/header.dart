@@ -1,18 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../controllers/profile_controller.dart';
-// import '../controllers/profile_controller.dart';
 
 class HeaderWidget extends StatelessWidget {
-  const HeaderWidget({Key? key}) : super(key: key);
+  const HeaderWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
     final UserProfileController controller = Get.find<UserProfileController>();
-    
+
     return Obx(() {
-      final companyName = controller.userProfile.value?.companyName ?? "Our Store";
-      
+      final companyName =
+          controller.userProfile.value?.companyName ?? "Our Store";
+
       return Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

@@ -21,7 +21,9 @@ class HomeScreen extends StatelessWidget {
       body: SafeArea(
         child: Obx(() {
           if (spotRateController.isLoading) {
-            return custom_loading( icon: khomeloading,);
+            return CustomLoading(
+              icon: khomeloading,
+            );
           }
 
           if (spotRateController.errorMessage.isNotEmpty) {
@@ -131,5 +133,3 @@ class HomeScreen extends StatelessWidget {
     );
   }
 }
-
-

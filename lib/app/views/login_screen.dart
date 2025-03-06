@@ -10,7 +10,7 @@ class LoginScreen extends StatelessWidget {
   final RxBool isPasswordVisible = false.obs;
   final RxBool isFormFilled = false.obs;
 
-  LoginScreen() {
+  LoginScreen({super.key}) {
     contactController.addListener(_updateFormState);
     passwordController.addListener(_updateFormState);
   }

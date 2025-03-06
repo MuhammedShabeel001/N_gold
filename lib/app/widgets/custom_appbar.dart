@@ -11,7 +11,7 @@ class CustomAppBar extends StatelessWidget {
   Widget build(BuildContext context) {
     String day = DateFormat('EEEE').format(DateTime.now());
     String date = DateFormat('dd MMM yyyy').format(DateTime.now());
- 
+
     return AppBar(
       leading: Padding(
         padding: const EdgeInsets.all(8.0),
