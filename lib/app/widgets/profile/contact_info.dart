@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-
+import 'package:get/get.dart';
+// import '../controllers/profile_controller.dart';
+import '../../controllers/profile_controller.dart';
 import 'contact_card.dart';
 
 class ContactInfoRowWidget extends StatelessWidget {
@@ -7,26 +9,44 @@ class ContactInfoRowWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        const Expanded(
-          child: ContactCardWidget(
-            title: 'WhatsApp',
-            content: '971581416969',
-            icon: Icons.message_outlined,
-            iconColor: Colors.green,
+    final UserProfileController controller = Get.find<UserProfileController>();
+    
+    return Obx(() {
+      // Format the phone number if available
+      final whatsappNumber = controller.userProfile.value?.whatsapp != null && controller.userProfile.value!.whatsapp != 0
+          ? controller.formatPhoneNumber(controller.userProfile.value!.whatsapp)
+          : '971581416969';
+      
+      // Get email if available
+      final email = controller.userProfile.value?.email ?? 'Drop us a line';
+      
+      return Row(
+        children: [
+          Expanded(
+            child: ContactCardWidget(
+              title: 'WhatsApp',
+              content: whatsappNumber,
+              icon: Icons.message_outlined,
+              iconColor: Colors.green,
+              // onTap: () {
+              //   // Handle WhatsApp tap
+              // },
+            ),
           ),
-        ),
-        const SizedBox(width: 16),
-        const Expanded(
-          child: ContactCardWidget(
-            title: 'Mail',
-            content: 'Drop us a line',
-            icon: Icons.mail_outline,
-            iconColor: Colors.blue,
+          const SizedBox(width: 16),
+          Expanded(
+            child: ContactCardWidget(
+              title: 'Mail',
+              content: email,
+              icon: Icons.mail_outline,
+              iconColor: Colors.blue,
+              // onTap: () {
+              //   // Handle email tap
+              // },
+            ),
           ),
-        ),
-      ],
-    );
+        ],
+      );
+    });
   }
 }
