@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:n_gold/app/controllers/navigation_controller.dart';
+import 'package:n_gold/app/views/commudities_screen.dart';
 import 'package:n_gold/app/views/home_screen.dart';
 import 'package:n_gold/app/views/news_screen.dart';
 import 'package:n_gold/app/views/profile_screen.dart';
@@ -14,7 +15,8 @@ class MainScreen extends StatelessWidget {
   final List<Widget> pages =  [
     HomeScreen(),
     NewsScreen(),
-    ProfileScreen(),
+    CommoditiesPage()
+    // ProfileScreen(),
   ];
 
   @override
