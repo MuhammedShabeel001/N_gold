@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:n_gold/app/utils/app_assets.dart';
+import 'package:n_gold/app/widgets/custom_loading.dart';
 import '../controllers/news_controller.dart';
 import '../widgets/news/news_item_card.dart';
 
@@ -10,18 +12,10 @@ class NewsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Latest News'),
-        actions: [
-          IconButton(
-            icon: Icon(Icons.refresh),
-            onPressed: () => _newsController.refreshNews(),
-          ),
-        ],
-      ),
+   
       body: Obx(() {
         if (_newsController.isLoading.value) {
-          return Center(child: CircularProgressIndicator());
+          return custom_loading(icon: knewsloading);
         }
 
         if (_newsController.errorMessage.isNotEmpty) {

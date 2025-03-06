@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class ContactCardWidget extends StatelessWidget {
   final String title;
   final String content;
-  final IconData icon;
+  final String icon;
   final Color iconColor;
   
   const ContactCardWidget({
@@ -50,7 +51,10 @@ class ContactCardWidget extends StatelessWidget {
               color: Colors.white,
               borderRadius: BorderRadius.circular(18),
             ),
-            child: Icon(icon, color: iconColor),
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SvgPicture.asset(icon, color: iconColor,),
+            ),
           ),
         ],
       ),

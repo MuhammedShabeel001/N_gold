@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:n_gold/app/utils/app_assets.dart';
 
 class InfoCardWidget extends StatelessWidget {
   final String title;
-  final IconData icon;
+  final String icon;
   final String? subtitle;
   final Color? iconColor;
   final VoidCallback? onTap;
@@ -18,11 +20,17 @@ class InfoCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 2,
-      shape: RoundedRectangleBorder(
+    return Container(
+      width: double.infinity,
+      padding: const EdgeInsets.all(2),
+      decoration: BoxDecoration(
+        color: Colors.grey[200],
         borderRadius: BorderRadius.circular(12),
       ),
+      // elevation: 2,
+      // shape: RoundedRectangleBorder(
+      //   borderRadius: BorderRadius.circular(12),
+      // ),
       child: InkWell(
         onTap: onTap,
         borderRadius: BorderRadius.circular(12),
@@ -30,11 +38,12 @@ class InfoCardWidget extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Row(
             children: [
-              Icon(
-                icon,
-                color: iconColor ?? Colors.amber[700],
-                size: 24,
-              ),
+              SvgPicture.asset(icon, color: iconColor ?? Colors.amber[700]),
+              // Icon(
+              //   icon,
+              //   color: iconColor ?? Colors.amber[700],
+              //   size: 24,
+              // ),
               const SizedBox(width: 16),
               Expanded(
                 child: Column(
@@ -61,11 +70,7 @@ class InfoCardWidget extends StatelessWidget {
                   ],
                 ),
               ),
-              Icon(
-                Icons.arrow_forward_ios,
-                color: Colors.grey[400],
-                size: 16,
-              ),
+              SvgPicture.asset(kopen)
             ],
           ),
         ),

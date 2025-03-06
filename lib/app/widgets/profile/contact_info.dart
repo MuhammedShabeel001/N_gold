@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:n_gold/app/utils/app_assets.dart';
 // import '../controllers/profile_controller.dart';
 import '../../controllers/profile_controller.dart';
 import 'contact_card.dart';
@@ -26,7 +27,7 @@ class ContactInfoRowWidget extends StatelessWidget {
             child: ContactCardWidget(
               title: 'WhatsApp',
               content: whatsappNumber,
-              icon: Icons.message_outlined,
+              icon: kwhatsapp,
               iconColor: Colors.green,
               // onTap: () {
               //   // Handle WhatsApp tap
@@ -38,7 +39,7 @@ class ContactInfoRowWidget extends StatelessWidget {
             child: ContactCardWidget(
               title: 'Mail',
               content: email,
-              icon: Icons.mail_outline,
+              icon: kmail,
               iconColor: Colors.blue,
               // onTap: () {
               //   // Handle email tap

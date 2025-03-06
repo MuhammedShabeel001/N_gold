@@ -10,7 +10,7 @@ class GoldTitleWidget extends StatelessWidget {
         Text(
           'Gold',
           style: TextStyle(
-            fontSize: 18,
+            fontSize: 22,
             fontWeight: FontWeight.bold,
           ),
         ),
@@ -18,7 +18,7 @@ class GoldTitleWidget extends StatelessWidget {
         Text(
           '(oz)',
           style: TextStyle(
-            fontSize: 14,
+            fontSize: 18,
             color: Colors.grey,
           ),
         ),

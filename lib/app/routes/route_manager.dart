@@ -5,6 +5,7 @@ import 'package:n_gold/app/bindings/news_binding.dart';
 import 'package:n_gold/app/bindings/profile_binding.dart';
 import 'package:n_gold/app/bindings/spot_rate_binding.dart';
 import 'package:n_gold/app/views/commudities_screen.dart';
+import 'package:n_gold/app/views/home_screen.dart';
 import 'package:n_gold/app/views/login_screen.dart';
 import 'package:n_gold/app/views/main_screen.dart';
 import 'package:n_gold/app/views/news_screen.dart';
@@ -17,6 +18,7 @@ class AppRoutes {
   static const String logIn = '/login';
   static const String main = '/';
   static const String news = '/news';
+  static const String home = '/home';
   static const String profile = '/profile';
   static const String commodities = '/commodities';
 
@@ -39,6 +41,14 @@ class AppRoutes {
       bindings: [
         AuthBinding(),
         NewsBinding()
+      ],
+    ),
+    GetPage(
+      name: home,
+      page: () => HomeScreen(),
+      bindings: [
+        AuthBinding(),
+        SpotRateBinding()
       ],
     ),
     GetPage(

@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(fontFamily: 'Poppins', useMaterial3: true),
         themeMode: ThemeMode.system,
         debugShowCheckedModeBanner: false,
-        initialRoute: AppRoutes.splashScreen,
+        initialRoute: AppRoutes.profile,
         initialBinding: InitialBinding(),
         getPages: AppRoutes.pages,
         // onGenerateRoute: RouteManager.generateRoute,

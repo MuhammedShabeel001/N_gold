@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:n_gold/app/utils/app_assets.dart';
 
 import '../../models/news_model.dart';
 
@@ -28,9 +29,10 @@ class NewsItemCard extends StatelessWidget {
               width: double.infinity,
               fit: BoxFit.cover,
               placeholder: (context, url) => 
-                Center(child: CircularProgressIndicator()),
+                Image.asset(newsPlaceholder,fit:BoxFit.cover ,),
               errorWidget: (context, url, error) => 
-                Icon(Icons.error),
+                Image.asset(newsPlaceholder,fit:BoxFit.cover ),
+                
             ),
           ),
           Padding(
