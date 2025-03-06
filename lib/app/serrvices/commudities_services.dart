@@ -1,16 +1,18 @@
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:n_gold/app/utils/constants/constants.dart';
 
 import '../models/commudities_model.dart';
 
 class ApiService {
-  static const String baseUrl = 'https://api.task.aurify.ae';
-  static const String apiKey = 'IfiuH/Ox6QKC3jP6ES6Y+aGYuGJEAOkbJb';
+  static const String baseUrl = ApiConstants.kbaseUrl;
+  static const String apiKey = ApiConstants.kapiKey;
+  static const String endpoint = ApiConstants.kcommoditiesEndpoint;
 
   Future<List<Commodity>> getCommodities(String adminId) async {
     try {
-      final url = '$baseUrl/user/get-commodities/$adminId';
+      final url = '$baseUrl$endpoint$adminId';
       if (kDebugMode) {
         print('[ApiService] Fetching commodities: $url');
       }

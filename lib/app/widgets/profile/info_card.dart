@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:n_gold/app/utils/app_assets.dart';
+import 'package:n_gold/app/utils/app_colors.dart';
+import 'package:n_gold/app/utils/app_textstyle.dart';
 
 class InfoCardWidget extends StatelessWidget {
   final String title;
@@ -24,7 +26,7 @@ class InfoCardWidget extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(2),
       decoration: BoxDecoration(
-        color: Colors.grey[200],
+        color: ktextfield,
         borderRadius: BorderRadius.circular(12),
       ),
       child: InkWell(
@@ -35,19 +37,13 @@ class InfoCardWidget extends StatelessWidget {
           child: Row(
             children: [
               // ignore: deprecated_member_use
-              SvgPicture.asset(icon, color: iconColor ?? Colors.amber[700]),
+              SvgPicture.asset(icon, color: iconColor ?? kaccentText),
               const SizedBox(width: 16),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      title,
-                      style: const TextStyle(
-                        fontSize: 16,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    Text(title, style: ktitleText),
                     if (subtitle != null)
                       Padding(
                         padding: const EdgeInsets.only(top: 4.0),

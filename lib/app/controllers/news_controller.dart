@@ -1,5 +1,6 @@
 import 'package:get/get.dart';
 import 'package:dio/dio.dart';
+import 'package:n_gold/app/utils/constants/constants.dart';
 import '../models/news_model.dart';
 import 'dart:developer' as developer;
 
@@ -9,9 +10,11 @@ class NewsController extends GetxController {
   final RxString errorMessage = ''.obs;
 
   final Dio _dio = Dio();
-  final String _baseUrl = 'https://api.task.aurify.ae';
-  final String _secretKey = 'IfiuH/Ox6QKC3jP6ES6Y+aGYuGJEAOkbJb';
-  final String _adminId = '66e994239654078fd531dc2a';
+  final String _baseUrl = ApiConstants.kbaseUrl;
+  final String _secretKey = ApiConstants.kapiKey;
+  final String _adminId = ApiConstants.kdefaultAdminId;
+  final String _endpoint = ApiConstants.knewsEndpoint;
+
 
   @override
   void onInit() {
@@ -25,7 +28,7 @@ class NewsController extends GetxController {
       errorMessage.value = '';
 
       final response = await _dio.get(
-        '$_baseUrl/user/get-news/$_adminId',
+        '$_baseUrl$_endpoint$_adminId',
         options: Options(
           headers: {
             'X-Secret-Key': _secretKey,

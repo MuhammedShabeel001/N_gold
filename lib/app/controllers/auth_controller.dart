@@ -4,6 +4,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:n_gold/app/utils/constants/constants.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../models/user_model.dart';
@@ -60,14 +61,14 @@ class AuthController extends GetxController {
 
     isLoading.value = true;
     final url = Uri.parse(
-        'https://api.task.aurify.ae/user/login/66e994239654078fd531dc2a');
+        '${ApiConstants.kbaseUrl}${ApiConstants.kauthEndpoint}${ApiConstants.kdefaultAdminId}');
     try {
       final response = await http.post(
         url,
         headers: {
           'Content-Type': 'application/json',
           'Accept': '*/*',
-          'X-Secret-Key': 'IfiuH/Ox6QKC3jP6ES6Y+aGYuGJEAOkbJb'
+          'X-Secret-Key': ApiConstants.kapiKey
         },
         body: jsonEncode({"contact": contact, "password": password}),
       );
@@ -162,13 +163,13 @@ class AuthController extends GetxController {
     }
 
     final url = Uri.parse(
-        'https://api.task.aurify.ae/user/forgot-password/66e994239654078fd531dc2a');
+        '${ApiConstants.kbaseUrl}${ApiConstants.kforgotpasswordEndpoint}${ApiConstants.kdefaultAdminId}');
     try {
       final response = await http.put(
         url,
         headers: {
           'Content-Type': 'application/json',
-          'X-Secret-Key': 'IfiuH/Ox6QKC3jP6ES6Y+aGYuGJEAOkbJb'
+          'X-Secret-Key': ApiConstants.kapiKey
         },
         body: jsonEncode({"contact": contact}),
       );

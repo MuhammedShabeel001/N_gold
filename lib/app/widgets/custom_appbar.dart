@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:intl/intl.dart';
 import 'package:n_gold/app/utils/app_assets.dart';
+import 'package:n_gold/app/utils/app_texts.dart';
 import 'package:n_gold/app/utils/app_textstyle.dart';
 
 class CustomAppBar extends StatelessWidget {
@@ -9,8 +10,8 @@ class CustomAppBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    String day = DateFormat('EEEE').format(DateTime.now());
-    String date = DateFormat('dd MMM yyyy').format(DateTime.now());
+    String day = DateFormat(dayDateFormat).format(DateTime.now());
+    String date = DateFormat(dateFormat).format(DateTime.now());
 
     return AppBar(
       leading: Padding(

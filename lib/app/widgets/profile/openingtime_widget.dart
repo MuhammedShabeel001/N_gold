@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:n_gold/app/utils/app_colors.dart';
+import 'package:n_gold/app/utils/app_texts.dart';
+import 'package:n_gold/app/utils/app_textstyle.dart';
 
 import 'hourrow.dart';
 
@@ -11,28 +14,24 @@ class HoursCardWidget extends StatelessWidget {
       width: double.infinity,
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.grey[200],
+        color: ktextfield,
         borderRadius: BorderRadius.circular(12),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            'Opening Hours:',
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: Colors.amber[700],
-            ),
+            openTime,
+            style: profileHead
           ),
           const SizedBox(height: 12),
-          const HourRowWidget(
-              days: 'Monday - Thursday', hours: '10 AM - 10 PM'),
+          HourRowWidget(
+              days: weekPart1, hours: time1),
           const SizedBox(height: 8),
-          const HourRowWidget(days: 'Friday', hours: '04 PM - 10 PM'),
+          HourRowWidget(days: weekPart2, hours: time2),
           const SizedBox(height: 8),
-          const HourRowWidget(
-              days: 'Saturday - Sunday', hours: '10 PM - 10 PM'),
+          HourRowWidget(
+              days: weekPart3, hours: time1),
         ],
       ),
     );

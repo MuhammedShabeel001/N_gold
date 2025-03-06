@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'package:flutter/foundation.dart';
 import 'package:n_gold/app/models/spot_rate_model.dart';
+import 'package:n_gold/app/utils/constants/constants.dart';
 import 'package:web_socket_channel/web_socket_channel.dart';
 import 'package:http/http.dart' as http;
 
@@ -36,7 +37,7 @@ class SpotRateWebSocketService {
   Future<void> fetchInitialSpotRates() async {
     try {
       final response = await http.get(
-        Uri.parse('$baseUrl/user/get-spotrates/$adminId'),
+        Uri.parse('$baseUrl${ApiConstants.kspotRatesEndpoint}$adminId'),
         headers: {
           'X-Secret-Key': secretKey,
           'Content-Type': 'application/json',

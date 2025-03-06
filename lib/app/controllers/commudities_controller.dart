@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:get/get.dart';
+import 'package:n_gold/app/utils/constants/constants.dart';
 
 import '../models/commudities_model.dart';
 import '../serrvices/commudities_services.dart';
@@ -11,7 +12,7 @@ class CommoditiesController extends GetxController {
   final RxBool isLoading = true.obs;
   final RxString error = ''.obs;
 
-  final String adminId = '66e994239654078fd531dc2a';
+  final String adminId = ApiConstants.kapiKey;
 
   @override
   void onInit() {

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+import 'package:n_gold/app/utils/constants/constants.dart';
 import 'dart:convert';
 
 import '../models/profile_model.dart';
@@ -8,8 +9,9 @@ import '../models/profile_model.dart';
 class UserProfileController extends GetxController {
   static UserProfileController get to => Get.find();
 
-  final String baseUrl = 'https://api.task.aurify.ae';
-  final String secretKey = 'IfiuH/Ox6QKC3jP6ES6Y+aGYuGJEAOkbJb';
+  final String baseUrl = ApiConstants.kbaseUrl;
+  final String secretKey = ApiConstants.kapiKey;
+  final String endpoint = ApiConstants.kprofileEndpoint;
 
   final Rx<UserProfile?> userProfile = Rx<UserProfile?>(null);
   final RxBool isLoading = false.obs;
@@ -26,10 +28,10 @@ class UserProfileController extends GetxController {
       isLoading.value = true;
       errorMessage.value = '';
 
-      final String adminId = '66e994239654078fd531dc2a';
+      final String adminId = ApiConstants.kdefaultAdminId;
 
       final response = await http.get(
-        Uri.parse('$baseUrl/user/get-profile/$adminId'),
+        Uri.parse('$baseUrl$endpoint$adminId'),
         headers: {
           'X-Secret-Key': secretKey,
           'Content-Type': 'application/json',

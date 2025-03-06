@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:n_gold/app/utils/app_assets.dart';
+import 'package:n_gold/app/utils/app_texts.dart';
 import '../controllers/navigation_controller.dart';
 
 class CustomNavBar extends StatelessWidget {
@@ -15,9 +16,9 @@ class CustomNavBar extends StatelessWidget {
           selectedIndex: controller.selectedIndex.value,
           onDestinationSelected: controller.changePage,
           destinations:  [
-            NavigationDestination(icon: SvgPicture.asset(khome), label: 'Home'),
-            NavigationDestination(icon: SvgPicture.asset(knews), label: 'News'), 
-            NavigationDestination(icon: SvgPicture.asset(kprofile), label: 'Profile'),
+            NavigationDestination(icon: SvgPicture.asset(khome), label: page1),
+            NavigationDestination(icon: SvgPicture.asset(knews), label: page2), 
+            NavigationDestination(icon: SvgPicture.asset(kprofile), label: page3),
           ],
         ));
   }
